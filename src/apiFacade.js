@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/opskrift_solo_war_exploded";
+const URL = "http://localhost:8080/recipe_war_exploded";
 
 
 function handleHttpErrors(res) {
