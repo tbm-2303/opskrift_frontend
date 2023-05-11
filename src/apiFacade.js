@@ -71,12 +71,14 @@ const getAllRecipes = async () => {
   return fetch(URL + `/api/recipe/all`, options).then(r => r.json());
       
 }
+
+const getAllIngredients = () => {
+  const options = makeOptions("GET", false);
+  return fetch(URL + `/api/ingredient/all`, options).then(r => r.json());
+}
       
 
-
-
-
-    
+ 
  
  return {
      makeOptions,
@@ -88,6 +90,7 @@ const getAllRecipes = async () => {
      fetchData,
      readJWTTokken,
      getAllRecipes,
+     getAllIngredients,
  }
 
 }

@@ -8,6 +8,7 @@ import LoginForm from "../components/LoginForm";
 import Test from "../routes/Test";
 import Recipes from './Recipes';
 import Listtest from './listtest'
+import Ingredients from './Ingredients';
 
 const Content = ({ loggedIn,login,user,logout}) => {
     return (
@@ -20,6 +21,7 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/login" element={<LoginForm login={login}/>}/>
                 <Route path="/test" element={<Test/>}/>
                 <Route path="/recipes"element={<Recipes/>} />
+                <Route path="/ingredients"element={<Ingredients/>} />
                 <Route path= "/listtest1" element={<Listtest/>} />
            
 
