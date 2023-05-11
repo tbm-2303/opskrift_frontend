@@ -13,7 +13,7 @@ function LoginForm ({login }) {
     }
 
     const onChange = (evt) => {
-        setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value })
+        setLoginCredentials({...loginCredentials, [evt.target.id]: evt.target.value})
     }
 
     return (

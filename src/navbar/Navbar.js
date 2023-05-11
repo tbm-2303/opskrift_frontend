@@ -13,19 +13,21 @@ const Navbar = ({user, loggedIn, logout}) => {
                 <Menu>
                     {isAdmin &&
                     
-                    <MenuLink to="/admin method1" ativestyle="true">
-                        admin method1
+                    <MenuLink to="/CreateRecipeNew" ativestyle="true">
+                        Create Recipe New
                     </MenuLink>
                     
                     }
                 
                     {isAdmin &&
                     
-                    <MenuLink to="/admin method2" ativestyle="true">
-                        admin method2
+                    <MenuLink to="/createRecipe" ativestyle="true">
+                        create Recipe
                     </MenuLink>
                     
                     }
+
+                
 
                     <MenuLink to="/ingredients" ativestyle="true">
                         ingredients

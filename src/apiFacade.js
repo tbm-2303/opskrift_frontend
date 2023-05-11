@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/recipe_war_exploded";
+const URL = "http://localhost:8080/opskrift_solo_war_exploded";
 
 
 function handleHttpErrors(res) {
@@ -67,30 +67,35 @@ function readJWTTokken(token) {
 
 
 const getAllRecipes = async () => {
-  const options = makeOptions("GET", false);
+  const options = makeOptions("GET", true, null);
   return fetch(URL + `/api/recipe/all`, options).then(r => r.json());
       
 }
 
 const getAllIngredients = () => {
-  const options = makeOptions("GET", false);
+  const options = makeOptions("GET",true, null);
   return fetch(URL + `/api/ingredient/all`, options).then(r => r.json());
 }
-      
+
+const createRecipe = (recipe) => {
+  const options = makeOptions("POST", true, recipe); //True add's the token
+  return fetch(URL + `/api/recipe/create2`, options).then(r => r.json());
+}
 
  
  
  return {
-     makeOptions,
-     setToken,
-     getToken,
-     loggedIn,
-     login,
-     logout,
-     fetchData,
-     readJWTTokken,
-     getAllRecipes,
-     getAllIngredients,
+    createRecipe,
+    makeOptions,
+    setToken,
+    getToken,
+    loggedIn,
+    login,
+    logout,
+    fetchData,
+    readJWTTokken,
+    getAllRecipes,
+    getAllIngredients,
  }
 
 }
