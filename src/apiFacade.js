@@ -84,7 +84,7 @@ const getAllReviews = () => {
       
 const createRecipe = (recipe) => {
   const options = makeOptions("POST", true, recipe);
-  return fetch(URL + `/api/recipe`, options).then(r => r.json());
+  return fetch(URL + `/api/recipe/create`, options).then(r => r.json());
 }
  
  

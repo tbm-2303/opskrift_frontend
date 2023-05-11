@@ -11,13 +11,6 @@ const Navbar = ({user, loggedIn, logout}) => {
             <PrimaryNav>
                 <Hamburger/>
                 <Menu>
-                    {isAdmin &&
-                    
-                    <MenuLink to="/CreateRecipeNew" ativestyle="true">
-                        Create Recipe New
-                    </MenuLink>
-                    
-                    }
                 
                     {isAdmin &&
                     

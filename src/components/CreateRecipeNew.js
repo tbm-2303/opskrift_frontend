@@ -62,7 +62,8 @@ const CreateRecipeNew = ({username}) => {
     
       return (
         <div>
-            <div>{username}</div>
+            
+            <h2>hello {username}</h2>
             <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name">
                 <Form.Label>Name:</Form.Label>
@@ -97,7 +98,7 @@ const CreateRecipeNew = ({username}) => {
                 onChange={handleCheckboxChange}
               />
                 ))}
-        </Form.Group>
+            </Form.Group>
             <Button variant="primary" type="submit">
                 Add Recipe
             </Button>
