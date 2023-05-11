@@ -19,7 +19,7 @@ const Navbar = ({user, loggedIn, logout}) => {
                     
                     }
                 
-                {isAdmin &&
+                    {isAdmin &&
                     
                     <MenuLink to="/admin method2" ativestyle="true">
                         admin method2
@@ -30,14 +30,6 @@ const Navbar = ({user, loggedIn, logout}) => {
                     <MenuLink to="/ingredients" ativestyle="true">
                         ingredients
                     </MenuLink>
-                
-                    <MenuLink to="/listtest1" ativestyle="true">
-                        list test 1
-                    </MenuLink>
-
-                    <MenuLink to="/test" ativestyle="true">
-                        test
-                    </MenuLink>
 
                     <MenuLink to="/recipes" ativestyle="true">
                         recipes
@@ -46,12 +38,12 @@ const Navbar = ({user, loggedIn, logout}) => {
                     <MenuLink to="/" ativestyle="true">
                         Home
                     </MenuLink>
+
                     <MenuLink to="/about" ativestyle="true">
                         About
                     </MenuLink>
-                    <MenuLink to="/joke" ativestyle="true">
-                        Joke
-                    </MenuLink>
+
+                    
                     {loggedIn ? (<MenuLink to="/" ativestyle="true" onClick={logout}> Logout </MenuLink> ) : (<MenuLink to="/login" ativestyle="true"> Login </MenuLink>)}
 
                    

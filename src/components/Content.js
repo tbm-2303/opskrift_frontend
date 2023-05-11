@@ -17,14 +17,9 @@ const Content = ({ loggedIn,login,user,logout}) => {
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/about" element={<About user={user}/>}/>
-                <Route path="/joke" element={<Joke/>}/>
                 <Route path="/login" element={<LoginForm login={login}/>}/>
-                <Route path="/test" element={<Test/>}/>
                 <Route path="/recipes"element={<Recipes/>} />
                 <Route path="/ingredients"element={<Ingredients/>} />
-                <Route path= "/listtest1" element={<Listtest/>} />
-           
-
             </Routes>
            
         </Router>
