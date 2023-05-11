@@ -35,6 +35,10 @@ const Navbar = ({user, loggedIn, logout}) => {
                         recipes
                     </MenuLink>
 
+                    <MenuLink to="/reviews" ativestyle="true">
+                        reviews
+                    </MenuLink>
+
                     <MenuLink to="/" ativestyle="true">
                         Home
                     </MenuLink>

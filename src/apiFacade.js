@@ -76,6 +76,11 @@ const getAllIngredients = () => {
   const options = makeOptions("GET", false);
   return fetch(URL + `/api/ingredient/all`, options).then(r => r.json());
 }
+
+const getAllReviews = () => {
+  const options = makeOptions("GET", false);
+  return fetch(URL + `/api/review/all`, options).then(r => r.json());
+}
       
 
  
@@ -91,6 +96,7 @@ const getAllIngredients = () => {
      readJWTTokken,
      getAllRecipes,
      getAllIngredients,
+     getAllReviews,
  }
 
 }
