@@ -5,9 +5,8 @@ import {useNavigate } from 'react-router-dom';
 
 const CreateRecipeNew = ({username}) => {
     const navigate = useNavigate()
-
-    const [allIngredients, setAllIngredients] = useState([]);
-    const [recipe, setRecipe] = useState({
+    const [allIngredients, setAllIngredients] = useState([]); // All ingredients from the API
+    const [recipe, setRecipe] = useState({ // The recipe we are creating
         name: '',
         description: '',
         ingredients: [],
@@ -15,15 +14,15 @@ const CreateRecipeNew = ({username}) => {
       });
       
       useEffect(() => {
-        apiFacade.getAllIngredients().then(ingredients => setAllIngredients(ingredients))
+        apiFacade.getAllIngredients().then(ingredients => setAllIngredients(ingredients)) // Get all ingredients from the API
     }, [])
     
-      const handleChange = (event) => {
+      const handleChange = (event) => { // Handle changes to the form inputs (recipe name and description)
         const { name, value } = event.target;
         setRecipe( (prevRecipe) => ({...prevRecipe, [name]: value}) );
       };
     
-      const handleCheckboxChange = (event) => {
+      const handleCheckboxChange = (event) => { // Handle changes to the checkbox inputs (ingredients)
         const { value, checked } = event.target;
       
         if (checked) {
