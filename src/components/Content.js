@@ -6,8 +6,7 @@ import Navbar from "../navbar/Navbar";
 import LoginForm from "../components/LoginForm";
 import Recipes from './Recipes';
 import Ingredients from './Ingredients';
-import CreateRecipe from './CreateRecipe';
-import CreateRecipeNew from './CreateRecipeNew';
+import Reviews from './Reviews';
 
 const Content = ({ loggedIn,login,user,logout}) => {
     return (
@@ -19,8 +18,7 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/login" element={<LoginForm login={login}/>}/>
                 <Route path="/recipes"element={<Recipes/>} />
                 <Route path="/ingredients"element={<Ingredients/>} />
-                <Route path= "/createRecipe" element={<CreateRecipe/>} />
-                <Route path= "/CreateRecipeNew" element={<CreateRecipeNew username={user.username}/>} />
+                <Route path="/reviews" element={<Reviews/>}/>
             </Routes>
            
         </Router>

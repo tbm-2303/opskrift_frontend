@@ -77,11 +77,15 @@ const getAllIngredients = () => {
   return fetch(URL + `/api/ingredient/all`, options).then(r => r.json());
 }
 
-const createRecipe = (recipe) => {
-  const options = makeOptions("POST", true, recipe); //True add's the token
-  return fetch(URL + `/api/recipe/create2`, options).then(r => r.json());
+const getAllReviews = () => {
+  const options = makeOptions("GET", true, null);
+  return fetch(URL + `/api/review/all`, options).then(r => r.json());
 }
-
+      
+const createRecipe = (recipe) => {
+  const options = makeOptions("POST", true, recipe);
+  return fetch(URL + `/api/recipe`, options).then(r => r.json());
+}
  
  
  return {
