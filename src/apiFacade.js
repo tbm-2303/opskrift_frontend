@@ -92,7 +92,6 @@ const createRecipe = (recipe) => {
   return fetch(URL + `/api/recipe/create`, options).then(r => r.json());
 }
  
-}
 
  return {
     createRecipe,
@@ -107,9 +106,8 @@ const createRecipe = (recipe) => {
     getAllRecipes,
     getAllIngredients,
     createIngredient,
-
-
+ }
 }
 
-
+const facade = apiFacade();
 export default facade;
