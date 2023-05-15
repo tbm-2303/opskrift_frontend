@@ -86,26 +86,26 @@ const CreateRecipeNew = ({username}) => {
         <Form onSubmit={handleSubmit}>
 
             <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control
-                type="text"
-                placeholder="Enter title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            />
+                <Form.Label>Title</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                />
             </Form.Group>
 
             <Form.Group controlId="description">
-            <Form.Label>Description</Form.Label>
-            <Form.Control
-                as="textarea"
-                rows={3}
-                placeholder="Enter description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                required
-            />
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                />
             </Form.Group>
 
             <FormGroup controlId='instructions'>
@@ -121,18 +121,18 @@ const CreateRecipeNew = ({username}) => {
             </FormGroup>
 
             <Form.Group controlId="ingredients">
-            <Form.Label>Ingredients</Form.Label>
-            {ingredients.map((ingredient) => (
-                <Form.Check
-                key={ingredient.id}
-                type="checkbox"
-                id={`ingredient-${ingredient.id}`}
-                label={ingredient.name}
-                name={ingredient.name}
-                onChange={(e) => handleIngredientChange(e)}
-                value={ingredient.id}
-                />
-            ))}
+                <Form.Label>Ingredients</Form.Label>
+                    {ingredients.map((ingredient) => (
+                        <Form.Check
+                            key={ingredient.id}
+                            type="checkbox"
+                            id={`ingredient-${ingredient.id}`}
+                            label={ingredient.name}
+                            name={ingredient.name}
+                            onChange={(e) => handleIngredientChange(e)}
+                            value={ingredient.id}
+                        />
+                    ))}
             </Form.Group>
             
             {selectedIngredients.map((ingredient) => {
@@ -140,25 +140,25 @@ const CreateRecipeNew = ({username}) => {
                 return (
                     <div key={id}>
                         <Form.Group controlId={`amount-${id}`}>
-                        <Form.Label>Amount for {name}</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter amount"
-                            value={ingredientAmounts[id] || ''}
-                            onChange={(e) => handleAmountChange(e, id)}
-                            required
-                        />
+                            <Form.Label>Amount for {name}</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter amount"
+                                value={ingredientAmounts[id] || ''}
+                                onChange={(e) => handleAmountChange(e, id)}
+                                required
+                            />
                         </Form.Group>
 
                         <Form.Group controlId={`unit-${id}`}>
-                        <Form.Label>Unit for {name}</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter unit"
-                            value={ingredientUnits[id] || ''}
-                            onChange={(e) => handleUnitChange(e, id)}
-                            required
-                        />
+                            <Form.Label>Unit for {name}</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Enter unit"
+                                value={ingredientUnits[id] || ''}
+                                onChange={(e) => handleUnitChange(e, id)}
+                                required
+                            />
                         </Form.Group>
                     </div>
                 );
