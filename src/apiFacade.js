@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
-const URL = "http://localhost:8080/opskrift_solo_war_exploded";
-=======
 const URL = "http://localhost:8080/Holm_exploded";
->>>>>>> Stashed changes
-
 
 function handleHttpErrors(res) {
  if (!res.ok) {
@@ -97,9 +92,9 @@ const createRecipe = (recipe) => {
   return fetch(URL + `/api/recipe/create`, options).then(r => r.json());
 }
  
- 
+}
+
  return {
-<<<<<<< Updated upstream
     createRecipe,
     makeOptions,
     setToken,
@@ -111,22 +106,10 @@ const createRecipe = (recipe) => {
     readJWTTokken,
     getAllRecipes,
     getAllIngredients,
-=======
-     makeOptions,
-     setToken,
-     getToken,
-     loggedIn,
-     login,
-     logout,
-     fetchData,
-     readJWTTokken,
-     getAllRecipes,
-     getAllIngredients,
-     getAllReviews,
-     createIngredient,
->>>>>>> Stashed changes
- }
+    createIngredient,
+
 
 }
-const facade = apiFacade();
+
+
 export default facade;

@@ -7,11 +7,9 @@ import LoginForm from "../components/LoginForm";
 import Recipes from './Recipes';
 import Ingredients from './Ingredients';
 import Reviews from './Reviews';
-<<<<<<< Updated upstream
-import CreateRecipeNew from './CreateRecipeNew';
-=======
 import CreateIngredient from './CreateIngredient';
->>>>>>> Stashed changes
+import CreateRecipeNew from './CreateRecipeNew';
+
 
 const Content = ({ loggedIn,login,user,logout}) => {
     return (
@@ -24,11 +22,8 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/recipes"element={<Recipes/>} />
                 <Route path="/ingredients"element={<Ingredients/>} />
                 <Route path="/reviews" element={<Reviews/>}/>
-<<<<<<< Updated upstream
-                <Route path= "/CreateRecipe" element={<CreateRecipeNew username={user.username}/>} />
-=======
                 <Route path="/create" element={<CreateIngredient/>}/>
->>>>>>> Stashed changes
+                <Route path= "/CreateRecipe" element={<CreateRecipeNew username={user.username}/>} />
             </Routes>
            
         </Router>
