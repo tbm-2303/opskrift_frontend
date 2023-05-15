@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/Holm_exploded";
+const URL = "http://localhost:8080/Holm_war_exploded";
 
 function handleHttpErrors(res) {
  if (!res.ok) {

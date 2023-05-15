@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false)
-    const [user, setUser] = useState({username: "", roles: ""});
+    const [user, setUser] = useState({username: "", roles: ""}); 
 
     const logout = () => {  
         facade.logout()
