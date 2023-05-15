@@ -59,8 +59,8 @@ const CreateRecipeNew = ({username}) => {
       const recipeData = {
         title: title,
         description: description,
-        instructions: 'instructions',
-        userName: 'user',
+        instructions: instructions,
+        userName: username,
         recipeIngredientDTOS: recipeIngredients,
       };  
 
@@ -83,6 +83,7 @@ const CreateRecipeNew = ({username}) => {
         <Container>
 
         <h2>Create Recipe</h2>
+        {username}
         <Form onSubmit={handleSubmit}>
 
             <Form.Group controlId="title">
@@ -108,7 +109,6 @@ const CreateRecipeNew = ({username}) => {
             />
             </Form.Group>
 
-
             <FormGroup controlId='instructions'>
                 <Form.Label>Instructions</Form.Label>
                 <Form.Control
@@ -120,8 +120,6 @@ const CreateRecipeNew = ({username}) => {
                     required
                 />
             </FormGroup>
-
-
 
             <Form.Group controlId="ingredients">
             <Form.Label>Ingredients</Form.Label>
