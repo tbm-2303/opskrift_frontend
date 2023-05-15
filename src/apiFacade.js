@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 const URL = "http://localhost:8080/opskrift_solo_war_exploded";
+=======
+const URL = "http://localhost:8080/Holm_exploded";
+>>>>>>> Stashed changes
 
 
 function handleHttpErrors(res) {
@@ -81,6 +85,12 @@ const getAllReviews = () => {
   const options = makeOptions("GET", true, null);
   return fetch(URL + `/api/review/all`, options).then(r => r.json());
 }
+
+const createIngredient = (ingredients) => {
+  const options = makeOptions("POST",true, ingredients); //True add's the token
+  return fetch(URL + `/api/ingredient/create`, options).then(r => r.json());
+}
+
       
 const createRecipe = (recipe) => {
   const options = makeOptions("POST", true, recipe);
@@ -89,6 +99,7 @@ const createRecipe = (recipe) => {
  
  
  return {
+<<<<<<< Updated upstream
     createRecipe,
     makeOptions,
     setToken,
@@ -100,6 +111,20 @@ const createRecipe = (recipe) => {
     readJWTTokken,
     getAllRecipes,
     getAllIngredients,
+=======
+     makeOptions,
+     setToken,
+     getToken,
+     loggedIn,
+     login,
+     logout,
+     fetchData,
+     readJWTTokken,
+     getAllRecipes,
+     getAllIngredients,
+     getAllReviews,
+     createIngredient,
+>>>>>>> Stashed changes
  }
 
 }
