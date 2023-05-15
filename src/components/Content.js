@@ -6,8 +6,6 @@ import Navbar from "../navbar/Navbar";
 import LoginForm from "../components/LoginForm";
 import Recipes from './Recipes';
 import Ingredients from './Ingredients';
-import Reviews from './Reviews';
-import CreateIngredient from './CreateIngredient';
 import CreateRecipeNew from './CreateRecipeNew';
 import RecipeInfo from './RecipeInfo';
 
@@ -22,12 +20,7 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/login" element={<LoginForm login={login}/>}/>
                 <Route path="/recipes"element={<Recipes/>} />
                 <Route path="/recipeInfo/:recipeId" element={<RecipeInfo/>} />
-
-
                 <Route path="/ingredients"element={<Ingredients/>} />
-                <Route path="/reviews" element={<Reviews/>}/>
-
-                <Route path="/createIngredient" element={<CreateIngredient/>}/>
                 <Route path= "/CreateRecipe" element={<CreateRecipeNew username={user.username}/>} />
             </Routes>
            

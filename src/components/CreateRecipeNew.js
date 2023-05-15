@@ -1,110 +1,163 @@
-import { Form, Button } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
 import apiFacade from "../apiFacade"
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CreateRecipeNew = ({username}) => {
-    const navigate = useNavigate()
-    const [allIngredients, setAllIngredients] = useState([]); // All ingredients from the API
-    const [recipe, setRecipe] = useState({ // The recipe we are creating
-        name: '',
-        description: '',
-        ingredients: [],
-        userName: username,
-      });
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [ingredients, setIngredients] = useState([]);
+    const [selectedIngredients, setSelectedIngredients] = useState([]);
+    const [ingredientAmounts, setIngredientAmounts] = useState({});
+    const [ingredientUnits, setIngredientUnits] = useState({});
+    const navigate = useNavigate();
       
-      useEffect(() => {
-        apiFacade.getAllIngredients().then(ingredients => setAllIngredients(ingredients)) // Get all ingredients from the API
+    useEffect(() => {
+      apiFacade.getAllIngredients().then(ingredients => setIngredients(ingredients)) 
     }, [])
     
-      const handleChange = (event) => { // Handle changes to the form inputs (recipe name and description)
-        const { name, value } = event.target;
-        setRecipe( (prevRecipe) => ({...prevRecipe, [name]: value}) );
-      };
+
+    const handleIngredientChange = (event) => {
+        const ingredientId = event.target.value;
+        const ingredientName = event.target.name; // Assuming the name attribute of the checkbox contains the ingredient name
+        const isSelected = selectedIngredients.some((ingredient) => ingredient.id === ingredientId);
     
-      const handleCheckboxChange = (event) => { // Handle changes to the checkbox inputs (ingredients)
-        const { value, checked } = event.target;
-      
-        if (checked) {
-          setRecipe((prevRecipe) => ( {...prevRecipe, ingredients: [...prevRecipe.ingredients, value],} ));
-        } else {
-          setRecipe((prevRecipe) => ( {...prevRecipe, ingredients: prevRecipe.ingredients.filter((ingredient) => ingredient !== value),} ));
-        }
-      };
+      if (isSelected) {
+        // Deselect the ingredient by filtering it out from the selectedIngredients array
+        const updatedIngredients = selectedIngredients.filter((ingredient) => ingredient.id !== ingredientId);
+        setSelectedIngredients(updatedIngredients);
+      } else {
+        // Select the ingredient by adding it to the selectedIngredients array
+        setSelectedIngredients([...selectedIngredients, { id: ingredientId, name: ingredientName }]);
+      }
+    };
   
-      const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleAmountChange = (e, ingredientId) => {
+      const amount = e.target.value;
+      setIngredientAmounts((prevState) => ({...prevState, [ingredientId]: amount,}));
+    };
+  
+    const handleUnitChange = (e, ingredientId) => {
+      const unit = e.target.value;
+      setIngredientUnits((prevState) => ({...prevState,[ingredientId]: unit,}));
+    };
     
-        const selectedIngredients = allIngredients.filter(ingredient => recipe.ingredients.includes(ingredient.name));
-        const newRecipe = {
-          name: recipe.name,
-          description: recipe.description,
-          userName: recipe.userName,
-          ingredients: selectedIngredients.map(ingredient => ({ name: ingredient.name }))
-        };
+    const handleSubmit = (e) => {
+      e.preventDefault();
     
+      const recipeIngredients = selectedIngredients.map((ingredient) => (
+        {
+        ingredientId: ingredient.id,
+        name: ingredient.name,
+        amount: ingredientAmounts[ingredient.id],
+        unit: ingredientUnits[ingredient.id],
+  
+        }
+      )); 
+        
+      const recipeData = {
+        title: title,
+        description: description,
+        instructions: 'instructions',
+        userName: 'user',
+        recipeIngredientDTOS: recipeIngredients,
+      };  
 
-        // Create the recipe in the API
-        apiFacade.createRecipe(newRecipe);
-
-        // Reset the form inputs
-        setRecipe({
-          name: '',
-          description: '',
-          ingredients: [],
-          userName : '',
-        });
-
-        navigate('/');
-       
-      };
-
+      apiFacade.createRecipe(recipeData).then(response =>{    
+          console.log('Recipe created:', response);
+          // Reset form fields and data
+          setTitle('');
+          setDescription('');
+          setSelectedIngredients([]);
+          setIngredientAmounts({});
+          setIngredientUnits({});
+          navigate('/');
+      })
+      
+    };
+     
     
       return (
-        <div>
-            
-            <h2>hello {username}</h2>
-            <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="name">
-                <Form.Label>Name:</Form.Label>
-                <Form.Control
+      
+        <Container>
+
+        <h2>Create Recipe</h2>
+        <Form onSubmit={handleSubmit}>
+
+            <Form.Group controlId="title">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
                 type="text"
-                name="name"
-                value={recipe.name}
-                onChange={handleChange}
+                placeholder="Enter title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 required
-                />
+            />
             </Form.Group>
+
             <Form.Group controlId="description">
-                <Form.Label>Description:</Form.Label>
-                <Form.Control
+            <Form.Label>Description</Form.Label>
+            <Form.Control
                 as="textarea"
-                name="description"
-                value={recipe.description}
-                onChange={handleChange}
+                rows={3}
+                placeholder="Enter description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 required
-                />
+            />
             </Form.Group>
+
             <Form.Group controlId="ingredients">
-              <Form.Label>Ingredients:</Form.Label>
-                {allIngredients.map((ingredient) => (
-              <Form.Check
+            <Form.Label>Ingredients</Form.Label>
+            {ingredients.map((ingredient) => (
+                <Form.Check
                 key={ingredient.id}
                 type="checkbox"
-                id={ingredient.id}
+                id={`ingredient-${ingredient.id}`}
                 label={ingredient.name}
-                value={ingredient.name}
-                checked={recipe.ingredients.includes(ingredient.name)}
-                onChange={handleCheckboxChange}
-              />
-                ))}
+                name={ingredient.name}
+                onChange={(e) => handleIngredientChange(e)}
+                value={ingredient.id}
+                />
+            ))}
             </Form.Group>
+            
+            {selectedIngredients.map((ingredient) => {
+                const { id, name } = ingredient;
+                return (
+                    <div key={id}>
+                        <Form.Group controlId={`amount-${id}`}>
+                        <Form.Label>Amount for {name}</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter amount"
+                            value={ingredientAmounts[id] || ''}
+                            onChange={(e) => handleAmountChange(e, id)}
+                            required
+                        />
+                        </Form.Group>
+
+                        <Form.Group controlId={`unit-${id}`}>
+                        <Form.Label>Unit for {name}</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Enter unit"
+                            value={ingredientUnits[id] || ''}
+                            onChange={(e) => handleUnitChange(e, id)}
+                            required
+                        />
+                        </Form.Group>
+                    </div>
+                );
+            })}
+
             <Button variant="primary" type="submit">
-                Add Recipe
+            Create Recipe
             </Button>
-            </Form>
-           
-        </div>
+
+        </Form>
+      
+    </Container>
             
     );
 };
