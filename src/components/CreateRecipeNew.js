@@ -1,4 +1,4 @@
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, FormGroup } from 'react-bootstrap';
 import { useState, useEffect } from 'react'
 import apiFacade from "../apiFacade"
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const CreateRecipeNew = ({username}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [instructions, setInstructions] = useState('');
     const [ingredients, setIngredients] = useState([]);
     const [selectedIngredients, setSelectedIngredients] = useState([]);
     const [ingredientAmounts, setIngredientAmounts] = useState({});
@@ -106,6 +107,21 @@ const CreateRecipeNew = ({username}) => {
                 required
             />
             </Form.Group>
+
+
+            <FormGroup controlId='instructions'>
+                <Form.Label>Instructions</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter instructions"
+                    value={instructions}
+                    onChange={(e) => setInstructions(e.target.value)}
+                    required
+                />
+            </FormGroup>
+
+
 
             <Form.Group controlId="ingredients">
             <Form.Label>Ingredients</Form.Label>
