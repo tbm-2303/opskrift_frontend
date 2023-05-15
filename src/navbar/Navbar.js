@@ -26,18 +26,9 @@ const Navbar = ({user, loggedIn, logout}) => {
                         ingredients
                     </MenuLink>
 
-                    <MenuLink to="/create" ativestyle="true">
-                        Add Ingredient
-                    </MenuLink>
-
                     <MenuLink to="/recipes" ativestyle="true">
                         recipes
                     </MenuLink>
-
-                    <MenuLink to="/reviews" ativestyle="true">
-                        reviews
-                    </MenuLink>
-
                     <MenuLink to="/" ativestyle="true">
                         Home
                     </MenuLink>
