@@ -83,7 +83,6 @@ const CreateRecipeNew = ({username}) => {
         <Container>
 
         <h2>Create Recipe</h2>
-        {username}
         <Form onSubmit={handleSubmit}>
 
             <Form.Group controlId="title">
