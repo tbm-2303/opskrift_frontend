@@ -4,7 +4,7 @@ import apiFacade from "../apiFacade";
 
 
 const CreateIngredient = () => {
-    const initialState = {name: "", quantity: "", measurementUnit: ""};
+    const initialState = {name: ""};
     const [ingredients, setIngredients] = useState(initialState);
     const errorAlertMsg = useRef(null);
     const successAlertMsg = useRef(null);
