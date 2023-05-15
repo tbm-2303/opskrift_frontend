@@ -97,9 +97,14 @@ const getRecipeById = (recipeId) => {
   return fetch(URL + `/api/recipe/${recipeId}`, options).then(r => r.json());
 }
 
+const getAllMyRecipes = (username) => {
+  const options = makeOptions("GET",true, null); //True add's the token
+  return fetch(URL + `/api/recipe/myRecipes/${username}`, options).then(r => r.json());
+}
 
 
  return {
+  getAllMyRecipes,
   getRecipeById,
   getAllReviews,
   createRecipe,
