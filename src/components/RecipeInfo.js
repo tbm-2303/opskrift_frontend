@@ -16,6 +16,8 @@ const RecipeInfo = () => {
     
     return (
         <div>
+
+
             <h2>Recipe Info</h2>
             <ListGroup>
                 {recipe && 
@@ -43,6 +45,8 @@ const RecipeInfo = () => {
                 }
             </ListGroup>
 
+
+
             <br></br><br></br>
             <h2>Ingredients</h2>
             <ListGroup>
@@ -56,6 +60,22 @@ const RecipeInfo = () => {
                     ))
                 }   
             </ListGroup>
+
+
+
+
+            <br></br><br></br>
+            <h2>Reviews</h2>
+            {recipe.review && (
+                <ListGroup>
+                {recipe.reviewDTOS.map((review) => (
+                    <ListGroup.Item key={review.id}>
+              <span className='review-name'>{review.name}</span>
+              <span className='review-description'>{review.description}</span>
+            </ListGroup.Item>
+         ))}
+       </ListGroup>
+      )}
             
         </div>
     )
