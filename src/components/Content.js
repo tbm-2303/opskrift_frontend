@@ -9,6 +9,7 @@ import Ingredients from './Ingredients';
 import Reviews from './Reviews';
 import CreateIngredient from './CreateIngredient';
 import CreateRecipeNew from './CreateRecipeNew';
+import RecipeInfo from './RecipeInfo';
 
 
 const Content = ({ loggedIn,login,user,logout}) => {
@@ -20,9 +21,13 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/about" element={<About user={user}/>}/>
                 <Route path="/login" element={<LoginForm login={login}/>}/>
                 <Route path="/recipes"element={<Recipes/>} />
+                <Route path="/recipeInfo/:recipeId" element={<RecipeInfo/>} />
+
+
                 <Route path="/ingredients"element={<Ingredients/>} />
                 <Route path="/reviews" element={<Reviews/>}/>
-                <Route path="/create" element={<CreateIngredient/>}/>
+
+                <Route path="/createIngredient" element={<CreateIngredient/>}/>
                 <Route path= "/CreateRecipe" element={<CreateRecipeNew username={user.username}/>} />
             </Routes>
            

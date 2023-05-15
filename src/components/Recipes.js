@@ -12,40 +12,44 @@ const Recipes = () => {
     },[])
 
 
-  return (
-    <div>
-    <h1>All recipes</h1>
-    {recipes &&
-    <Table striped bordered hover > 
-      <thead>
-          <tr>
-          <th>#</th>
-          <th>name</th>
-          <th>description</th>
-          <th>username</th>
-          <th></th>
-          </tr>
-      </thead>
-      <tbody>
-          {recipes &&
-          recipes.map((recipe) =>
-          <tr key={recipe.id}>
-              <td>{recipe.id}</td>
-              <td>{recipe.name}</td>
-              <td>{recipe.description}</td>
-              <td>{recipe.username}</td>
-              <td>
-              <Link to={"/recipeInfo/"+recipe.id}
-                  key={recipe.id}>do we need a button here?
-              </Link>
-              </td>
-          </tr>
-          )}
-      </tbody>
-    </Table>
-     }
-    </div>
-  )
+    return (
+        <div>
+            <h1>All recipes</h1>
+            {recipes &&
+                <Table striped bordered hover > 
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>title</th>
+                        <th>description</th>
+                        <th>instructions</th>
+                        <th>creator</th>
+                        <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {recipes &&
+                            recipes.map((recipe) =>
+                                <tr key={recipe.id}>
+                                <td>{recipe.id}</td>
+                                <td>{recipe.title}</td>
+                                <td>{recipe.description}</td>
+                                <td>{recipe.instructions}</td>
+                                <td>{recipe.userName}</td>
+                                <td>
+                                <Link to={`/recipeInfo/${recipe.id}`}
+                                    key={recipe.id}>See more information about this recipe
+                                </Link>
+                                </td>
+                                </tr>
+                            )
+                        }
+                    </tbody>
+                </Table>
+            }
+        </div>
+    )
+
 }
 
 export default Recipes

@@ -1,9 +1,9 @@
 const URL = "http://localhost:8080/Holm_war_exploded";
 
 function handleHttpErrors(res) {
- if (!res.ok) {
+  if (!res.ok) {
   console.log(res.status)
-   return Promise.reject({ status: res.status, fullError: res.json() })
+  return Promise.reject({ status: res.status, fullError: res.json() })
  }
  return res.json();
 }
@@ -17,7 +17,7 @@ const login = (user, password) => {
 }
 
 const fetchData = (ressource) => { 
-    const options = makeOptions("GET",true); //True add's the token
+    const options = makeOptions("GET",true, null); //True add's the token
     return fetch(URL + ressource, options).then(handleHttpErrors);
 }
 
@@ -81,8 +81,8 @@ const getAllReviews = () => {
   return fetch(URL + `/api/review/all`, options).then(r => r.json());
 }
 
-const createIngredient = (ingredients) => {
-  const options = makeOptions("POST",true, ingredients); //True add's the token
+const createIngredient = (ingredient) => {
+  const options = makeOptions("POST",true, ingredient); //True add's the token
   return fetch(URL + `/api/ingredient/create`, options).then(r => r.json());
 }
 
@@ -92,20 +92,28 @@ const createRecipe = (recipe) => {
   return fetch(URL + `/api/recipe/create`, options).then(r => r.json());
 }
  
+const getRecipeById = (recipeId) => {
+  const options = makeOptions("GET",true, null); //True add's the token
+  return fetch(URL + `/api/recipe/${recipeId}`, options).then(r => r.json());
+}
+
+
 
  return {
-    createRecipe,
-    makeOptions,
-    setToken,
-    getToken,
-    loggedIn,
-    login,
-    logout,
-    fetchData,
-    readJWTTokken,
-    getAllRecipes,
-    getAllIngredients,
-    createIngredient,
+  getRecipeById,
+  getAllReviews,
+  createRecipe,
+  makeOptions,
+  setToken,
+  getToken,
+  loggedIn,
+  login,
+  logout,
+  fetchData,
+  readJWTTokken,
+  getAllRecipes,
+  getAllIngredients,
+  createIngredient,
  }
 }
 
