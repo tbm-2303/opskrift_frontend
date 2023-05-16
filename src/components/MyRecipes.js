@@ -13,7 +13,7 @@ const MyRecipes = ({username}) => {
     return (
       
         <Container>
-            <h1>{username}</h1>
+        
             <h1>My recipes</h1>
             {myRecipes &&
                 <Table striped bordered hover > 

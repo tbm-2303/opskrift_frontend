@@ -79,7 +79,6 @@ const CreateRecipeNew = ({username}) => {
      
     
       return (
-      
         <Container>
 
         <h2>Create Recipe</h2>
