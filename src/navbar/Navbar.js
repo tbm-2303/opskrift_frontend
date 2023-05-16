@@ -17,15 +17,21 @@ const Navbar = ({user, loggedIn, logout}) => {
                     <MenuLink to="/createRecipe" ativestyle="true">
                         create Recipe
                     </MenuLink>
+
+                    
                     
                     }
-
                 
                     <MenuLink to= "/myRecipes" ativestyle="true">
                         My recipes
                     </MenuLink>
+
                     <MenuLink to="/ingredients" ativestyle="true">
                         ingredients
+                    </MenuLink>
+
+                    <MenuLink to="/createIngredient" ativestyle="true">
+                        create ingredient
                     </MenuLink>
 
                     <MenuLink to="/recipes" ativestyle="true">

@@ -16,7 +16,7 @@ const Ingredients = () => {
         if(ingredients) {const newingredient = ingredients.filter((ingredients) => ingredients.id != ingredientID);
             setIngredients(newingredient)}
     };
-
+    
     return (
         <div>
             <h1>All ingredients</h1>
