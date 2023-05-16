@@ -36,7 +36,7 @@ const Ingredients = () => {
                                     <td>{ingredients.id}</td>
                                     <td>{ingredients.name}</td>
                                     <td>
-                                        <Link to={"/rentalInfo/"+ingredients.id}
+                                        <Link to={"/ingredient/"+ingredients.id}
                                               key={ingredients.id}
                                         >Change</Link>
                                         </td>
