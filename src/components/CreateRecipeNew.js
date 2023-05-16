@@ -81,6 +81,7 @@ const CreateRecipeNew = ({username}) => {
       return (
       
         <Container>
+          {username}
 
         <h2>Create Recipe</h2>
         <Form onSubmit={handleSubmit}>
