@@ -12,15 +12,12 @@ const Navbar = ({user, loggedIn, logout}) => {
                 <Hamburger/>
                 <Menu>
                 
-                    {isAdmin &&
+                    
                     
                     <MenuLink to="/createRecipe" ativestyle="true">
                         create Recipe
                     </MenuLink>
 
-                    
-                    
-                    }
                 
                     <MenuLink to= "/myRecipes" ativestyle="true">
                         My recipes

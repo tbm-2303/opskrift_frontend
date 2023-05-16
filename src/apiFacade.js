@@ -107,10 +107,6 @@ const deleteIngredient = (ingredients) => {
   return fetch(URL + `/api/ingredient/delete/`+ingredients, options).then(r => r.json());
 }
 
-const updateIngredient = (ingredients) => {
-  const options = makeOptions("PUT", ingredients,true); //True add's the token
-  return fetch(URL + `/api/ingredient/update/`, options).then(r => r.json());
-}
 
 
  return {
@@ -130,7 +126,6 @@ const updateIngredient = (ingredients) => {
   getAllIngredients,
   createIngredient,
   deleteIngredient,
-  updateIngredient,
  }
 }
 
