@@ -102,6 +102,11 @@ const getAllMyRecipes = (username) => {
   return fetch(URL + `/api/recipe/myRecipes/${username}`, options).then(r => r.json());
 }
 
+const deleteIngredient = (ingredients) => {
+  const options = makeOptions("DELETE",null,true); //True add's the token
+  return fetch(URL + `/api/ingredient/delete/`+ingredients, options).then(r => r.json());
+}
+
 
  return {
   getAllMyRecipes,
@@ -119,6 +124,7 @@ const getAllMyRecipes = (username) => {
   getAllRecipes,
   getAllIngredients,
   createIngredient,
+  deleteIngredient,
  }
 }
 
