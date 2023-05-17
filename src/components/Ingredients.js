@@ -36,13 +36,13 @@ const Ingredients = () => {
                                     <td>{ingredients.id}</td>
                                     <td>{ingredients.name}</td>
                                     <td>
-                                        <Link to={"/ingredient/"+ingredients.id}
-                                              key={ingredients.id}
-                                        >Change</Link>
-                                        </td>
-                                        <td><Button type="button" onClick={handleRemove} key={ingredients.id} value={ingredients.id} className="btn-danger">remove ingredient</Button></td>
+                                    <Link to={"/ingredient/"+ingredients.id}
+                                              key={ingredients.id}> Change
+                                    </Link>
+                                    </td>
+                                    <td><Button type="button" onClick={handleRemove} key={ingredients.id} value={ingredients.id} className="btn-danger">remove ingredient</Button></td>
 
-                                    </tr>
+                                </tr>
                             )
                         }
                     </tbody>

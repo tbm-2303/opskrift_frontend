@@ -13,9 +13,10 @@ const MyRecipes = ({username}) => {
     return (
       
         <Container>
+            
         
             <h1>My recipes</h1>
-            {myRecipes &&
+            {myRecipes  &&
                 <Table striped bordered hover > 
                     <thead>
                         <tr>
