@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import apiFacade from '../apiFacade'
 import React from 'react'
 import { Container, Table, Form, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const MyRecipes = ({username}) => {
     const [myRecipes, setMyRecipes] = useState([])
@@ -9,6 +10,18 @@ const MyRecipes = ({username}) => {
     useEffect(() => {
         apiFacade.getAllMyRecipes(username).then(myRecipes => setMyRecipes(myRecipes))
     }, [])
+
+   
+    const handleDelete = (e) => {
+        const recipeID = e.target.value;
+        apiFacade.deleteRecipe(recipeID)
+        if(myRecipes) {
+            const newRecipe = myRecipes.filter((myRecipes) => myRecipes.id != recipeID);
+            setMyRecipes(newRecipe)
+        }
+
+    };
+
 
     return (
       
@@ -25,6 +38,8 @@ const MyRecipes = ({username}) => {
                         <th>description</th>
                         <th>instructions</th>
                         <th>creator</th>
+                        <th></th>
+                        <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +51,8 @@ const MyRecipes = ({username}) => {
                                 <td>{recipe.description}</td>
                                 <td>{recipe.instructions}</td>
                                 <td>{recipe.userName}</td>
+                                <td><Button type='button' onClick={handleDelete} value={recipe.id} key={recipe.id} className="btn-danger">Delete </Button></td>
+                                <td><Link to={`/updateRecipe/${recipe.id}`} key={recipe.id}> Update</Link></td>
                                 </tr>
                             )
                         }

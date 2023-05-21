@@ -10,6 +10,7 @@ import CreateRecipeNew from './CreateRecipeNew';
 import RecipeInfo from './RecipeInfo';
 import MyRecipes from './MyRecipes';
 import CreateIngredient from './CreateIngredient';
+import UpdateMyRecipe from './UpdateMyRecipe';
 
 
 const Content = ({ loggedIn,login,user,logout}) => {
@@ -26,6 +27,8 @@ const Content = ({ loggedIn,login,user,logout}) => {
                 <Route path="/ingredients"element={<Ingredients/>} />
                 <Route path= "/CreateRecipe" element={<CreateRecipeNew username={user.username}/>} />
                 <Route path= "/CreateIngredient" element={<CreateIngredient username={user.username}/>} />
+                <Route path= "/updateRecipe/:recipeId" element={<UpdateMyRecipe/>} />
+                    
             </Routes>
            
         </Router>

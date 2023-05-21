@@ -30,7 +30,7 @@ const Reviews = () => {
                     <td>{review.description}</td>
                     <td>
                     <Link to={"/reviewInfo/"+review.id}
-                        key={review.id}>do we need a button here?
+                        key={review.id}> Review info
                     </Link>
                     </td>
                 </tr>
