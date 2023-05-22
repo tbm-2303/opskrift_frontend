@@ -67,54 +67,54 @@ function readJWTTokken(token) {
 
 const getAllRecipes = async () => {
   const options = makeOptions("GET", true, null);
-  return fetch(URL + `/api/recipe/all`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/recipe/all`, options).then(r => r.json());
       
 }
 
 const getAllIngredients = () => {
   const options = makeOptions("GET",true, null);
-  return fetch(URL + `/api/ingredient/all`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/ingredient/all`, options).then(r => r.json());
 }
 
 const getAllReviews = () => {
   const options = makeOptions("GET", true, null);
-  return fetch(URL + `/api/review/all`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/review/all`, options).then(r => r.json());
 }
 
 const createIngredient = (ingredient) => {
   const options = makeOptions("POST",true, ingredient); //True add's the token
-  return fetch(URL + `/api/ingredient/create`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/ingredient/create`, options).then(r => r.json());
 }
 
       
 const createRecipe = (recipe) => {
   const options = makeOptions("POST", true, recipe);
-  return fetch(URL + `/api/recipe/create`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/recipe/create`, options).then(r => r.json());
 }
  
 const getRecipeById = (recipeId) => {
   const options = makeOptions("GET",true, null); //True add's the token
-  return fetch(URL + `/api/recipe/${recipeId}`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/recipe/${recipeId}`, options).then(r => r.json());
 }
 
 const getAllMyRecipes = (username) => {
   const options = makeOptions("GET", true, null); //True add's the token
-  return fetch(URL + `/api/recipe/myRecipes/${username}`, options).then(handleHttpErrors).then(r => r.json());
+  return fetch(URL + `/api/recipe/myRecipes/${username}`, options).then(r => r.json());
 }
 
 const deleteIngredient = (ingredients) => {
-  const options = makeOptions("DELETE", null, true); //True add's the token
-  return fetch(URL + `/api/ingredient/delete/`+ingredients, options).then(handleHttpErrors).then(r => r.json());
+  const options = makeOptions("DELETE", true, null); //True add's the token
+  return fetch(URL + `/api/ingredient/delete/`+ingredients, options).then(r => r.json());
 }
 
 const deleteRecipe = (recipeId) => {
-  const options = makeOptions("DELETE", null, true); //True add's the token
-  return fetch(URL + `/api/recipe/delete/`+recipeId, options).then(handleHttpErrors).then(r => r.json());
+  const options = makeOptions("DELETE", null, null); //True add's the token
+  return fetch(URL + `/api/recipe/delete/`+recipeId, options).then(r => r.json());
 }
 
 const updateRecipeInfo = (recipe) => {
-  const options = makeOptions("PUT", recipe, true); //True add's the token
-  return fetch(URL + "api/recipe/update", options).then(handleHttpErrors).then(r => r.json());
+    const options = makeOptions("PUT", true, recipe); //True add's the token
+    fetch(URL + "/api/recipe/update", options);
 }
 
 
