@@ -112,7 +112,7 @@ const CreateRecipeNew = ({username}) => {
                 <Form.Control
                     as="textarea"
                     rows={3}
-                    placeholder="Enter instructions"
+                    placeholder="1. Do this 2. Do that 3. Do this and that"
                     value={instructions}
                     onChange={(e) => setInstructions(e.target.value)}
                     required
